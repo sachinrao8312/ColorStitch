@@ -30,6 +30,13 @@ public class PlayerCircle : MonoBehaviour
          }     
     }
 
+   void OnTriggerEnter2D ( Collider2D col){
+      if ( col.tag != ballColor)
+      {
+        Debug.Log("GAME OVER");
+      }
+     
+    }
 
  
     void setRandomColorForBall()
