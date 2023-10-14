@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerCircle : MonoBehaviour
 {
   public float JumpForce = 10f;
@@ -31,13 +31,25 @@ public class PlayerCircle : MonoBehaviour
     }
 
    void OnTriggerEnter2D ( Collider2D col){
+
+      if (col.tag == "colorChanger")
+      {
+        setRandomColorForBall();
+
+        Destroy(col.gameObject);
+        return;
+      }
+
       if ( col.tag != ballColor)
       {
         Debug.Log("GAME OVER");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
       }
-     
+
+
     }
 
+   
  
     void setRandomColorForBall()
     {
